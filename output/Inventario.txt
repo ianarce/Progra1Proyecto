@@ -1,0 +1,7 @@
+Teclado 9 200.00
+Mouse 10 150.00
+CPU 10 500.00
+USB 2 10.00
+Monitor 5 200.00
+Impresora 17 100.00
+Proyector 12 300.00
