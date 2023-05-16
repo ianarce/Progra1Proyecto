@@ -10,7 +10,7 @@ struct Producto
 };
     
 struct Producto carrito[15];
-struct Producto inventario[7]={};//ARRAY DE structs (productos en inventario)
+struct Producto inventario[7]={};//ARRAY DE STRUCTS (productos en inventario)
 
 void agregarProducto()
 {
@@ -25,15 +25,17 @@ void agregarProducto()
     printf("\n6.Impresora");
     printf("\n7.Proyector\n");
     scanf("%d", &opc);
+    system("cls");
+    printf("\nOpcion escogida: %d", opc);
 
     if (opc < 1 || opc > 7) 
     {
         printf("Opción inválida\n");
     }
     i = opc - 1;
-    printf("Ingrese la cantidad de unidades que desea agregar: ");
+    printf("\nIngrese la cantidad de unidades que desea agregar: ");
     scanf("%d", &unidades);
-    
+
     if (unidades <= 0) 
     {
         printf("\nERROR, INTENTE DE NUEVO");
@@ -260,10 +262,9 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
     leerInventario();
 
     printf("\n..........B I E N V E N I D O  A  N U E S T R A  T I E N D A  D E  P R O D U C T O S  D E  C O M P U T A C I O N..........");
-    do{
         opcion=menu();
         switch (opcion) 
-        {
+        do{
             case 1:
                 strcpy(opc,"SI");
                 while(strcmp(opc,"SI")==0){
@@ -310,7 +311,7 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
                 printf("ERROR, INTENTE DE NUEVO\n");
                 break;
         }
-    }while (opcion != 5);
+        while (opcion != 5);
     
     subirInventario();
     return 0;
