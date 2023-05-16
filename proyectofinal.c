@@ -106,7 +106,7 @@ int menu() //Muestra un menú de opciones al usuario y devuelve la opción selec
         printf("1. REALIZAR COMPRA DE PRODUCTOS\n");
         printf("2. GENERAR FACTURA\n");
         printf("3. REPORTE DE INVENTARIO\n");
-        printf("4. Agregar productos\n");
+        printf("4. AGREGAR A INVENTARIO\n");
         printf("5. SALIR DE LA TIENDA\n");
         printf("Digite una opcion: ");
         fflush(stdin);
@@ -247,7 +247,7 @@ void guardarFactura(int totalProductos) //Guarda una copia de la factura generad
     fprintf(archivoTickets,"\n");
     fprintf(archivoTickets,"TOTAL (IVA AGREGADO): %.2f",subtotal*1.16);
 
-    printf("Ticket guardado correctamente el carrito se ha vaciado\n");
+    printf("TICKET GUARDADO CON EXITO...CARRITO VACIADO CON EXITO\n");
     fprintf(archivoTickets,"\n");
     fclose(archivoTickets);
 }
