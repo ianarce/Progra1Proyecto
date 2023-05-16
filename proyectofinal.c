@@ -17,13 +17,13 @@ void agregarProducto()
     int i, opc, unidades;
     
     printf("\nIndique la seccion donde va a agregar producto: ");
-    printf("\n1.CPU");
-    printf("\n2.Mouse");
-    printf("\n3.Teclado");
-    printf("\n4.USB");
-    printf("\n5.Monitor");
-    printf("\n6.Impresora");
-    printf("\n7.Proyector\n");
+    printf("\n[1]. CPU");
+    printf("\n[2]. Mouse");
+    printf("\n[3]. Teclado");
+    printf("\n[4]. USB");
+    printf("\n[5]. Monitor");
+    printf("\n[6]. Impresora");
+    printf("\n[7]. Proyector\n");
     scanf("%d", &opc);
     system("cls");
     printf("\nOpcion escogida: %d", opc);
@@ -103,11 +103,11 @@ int menu() //Muestra un menú de opciones al usuario y devuelve la opción selec
     int opcion ;
 
         printf("\n---M E N U---\n");
-        printf("1. REALIZAR COMPRA DE PRODUCTOS\n");
-        printf("2. GENERAR FACTURA\n");
-        printf("3. REPORTE DE INVENTARIO\n");
-        printf("4. AGREGAR A INVENTARIO\n");
-        printf("5. SALIR DE LA TIENDA\n");
+        printf("[1]. REALIZAR COMPRA DE PRODUCTOS\n");
+        printf("[2]. GENERAR FACTURA\n");
+        printf("[3]. REPORTE DE INVENTARIO\n");
+        printf("[4]. AGREGAR A INVENTARIO\n");
+        printf("[5]. SALIR DE LA TIENDA\n");
         printf("Digite una opcion: ");
         fflush(stdin);
         scanf("%d", &opcion);
@@ -179,7 +179,7 @@ void realizarCompra(int productosEnCarrito) //Permite al usuario realizar compra
     int numProducto,cantidad;
     imprimirInventario();
     do{
-        printf("Ingresa el numero de producto a comprar: \n");
+        printf("\nIngresa el numero de producto a comprar: \n");
         scanf("%d",&numProducto);
         if(numProducto<=0||numProducto>7)
         {
@@ -187,7 +187,7 @@ void realizarCompra(int productosEnCarrito) //Permite al usuario realizar compra
         }
         if(inventario[numProducto-1].unidades==0)
         {
-            printf("PRODUCTO AGOTADO \n");
+            printf("PRODUCTO AGOTADO, INTENTE DE NUEVO \n");
         }
     }
     while (numProducto<=0||numProducto>7 || inventario[numProducto-1].unidades==0);    
@@ -196,7 +196,7 @@ void realizarCompra(int productosEnCarrito) //Permite al usuario realizar compra
         printf("Ingresa la cantidad a comprar: \n");
         scanf("%d",&cantidad);
         if (cantidad<=0)
-         {
+        {
             system("cls");
             printf("ERROR, INTENTE DE NUEVO \n");
         }              
@@ -210,9 +210,9 @@ void realizarCompra(int productosEnCarrito) //Permite al usuario realizar compra
         }
         else 
         {
-        system("cls");
-        printf("Productos agotados o insuficientes \n");
-        printf("Productos disponibles: %d  \n",inventario[numProducto-1].unidades);          
+            system("cls");
+            printf("PRODUCTOS AGOTADOS O INSUFICIENTES \n");
+            printf("Productos disponibles: %d  \n",inventario[numProducto-1].unidades);          
         }
     }while(cantidad<=0||cantidad>inventario[numProducto-1].unidades);
     
@@ -242,13 +242,12 @@ void guardarFactura(int totalProductos) //Guarda una copia de la factura generad
         }
         subtotal += carrito[i].precio * carrito[i].unidades;
     }
-
     fprintf(archivoTickets,"SUBTOTAL: %.2f",subtotal);
     fprintf(archivoTickets,"\n");
     fprintf(archivoTickets,"TOTAL (IVA AGREGADO): %.2f",subtotal*1.16);
-
-    printf("TICKET GUARDADO CON EXITO...CARRITO VACIADO CON EXITO\n");
     fprintf(archivoTickets,"\n");
+    
+    printf("TICKET GUARDADO CON EXITO...CARRITO VACIADO CON EXITO\n");
     fclose(archivoTickets);
 }
 
@@ -261,13 +260,17 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
     int productosEnCarrito=0;
     leerInventario();
 
-    printf("\n..........B I E N V E N I D O  A  N U E S T R A  T I E N D A  D E  P R O D U C T O S  D E  C O M P U T A C I O N..........");
-        opcion=menu();
-        switch (opcion) 
+    printf("\n..........B I E N V E N I D O  A  N U E S T R A  T I E N D A  D E  P R O D U C T O S  D E  C O M P U T A C I O N..........\n");
+       
+         
         do{
+        opcion=menu();
+        switch (opcion)
+        {
             case 1:
                 strcpy(opc,"SI");
-                while(strcmp(opc,"SI")==0){
+                while(strcmp(opc,"SI")==0)
+                {
                     bandera=1;
                     productosEnCarrito++;
                     realizarCompra(productosEnCarrito);  
@@ -276,7 +279,6 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
                     gets(opc);
                     fflush(stdin);
                 }
-                
                 break;
             case 2:
                 if(bandera==1)
@@ -311,11 +313,8 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
                 printf("ERROR, INTENTE DE NUEVO\n");
                 break;
         }
-        while (opcion != 5);
+        }while (opcion != 5);
     
     subirInventario();
     return 0;
 }
-
-
-       
