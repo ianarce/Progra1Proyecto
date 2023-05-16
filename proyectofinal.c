@@ -101,13 +101,13 @@ int menu() //muestra un menú de opciones al usuario y devuelve la opción selec
 {
     int opcion ;
 
-        printf("\n---MENU---\n");
-        printf("1. Realizar compra de productos\n");
-        printf("2. Generar factura\n");
-        printf("3. Reporte\n");
+        printf("\n---M E N U---\n");
+        printf("1. REALIZAR COMPRA DE PRODUCTOS\n");
+        printf("2. GENERAR FACTURA\n");
+        printf("3. REPORTE DE INVENTARIO\n");
         printf("4. Agregar productos\n");
-        printf("5. Salir\n");
-        printf("Ingrese una opcion: ");
+        printf("5. SALIR DE LA TIENDA\n");
+        printf("Digite una opcion: ");
         fflush(stdin);
         scanf("%d", &opcion);
 
@@ -266,7 +266,7 @@ int main ()
 
     printf("\n..........B I E N V E N I D O  A  N U E S T R A  T I E N D A  D E  E Q U I P O  D E  C O M P U T O..........");
     do{
-      opcion=menu();
+        opcion=menu();
         switch (opcion) 
         {
             case 1:
@@ -286,23 +286,20 @@ int main ()
                 if(bandera==1)
                 {
                     generarFactura(productosEnCarrito,carrito);
-                    printf("¿ (El carrito se vaciara una vez realizado el proceso)\n");
+                    printf("¿Deseas imprimir tu ticket? (El carrito se vaciara una vez realizado el proceso)\n");
                     printf("SI/NO\n");
                     fflush(stdin);
                     gets(opcGuardarTicket);
                     fflush(stdin);
                                
                     if(strcmp(opcGuardarTicket,"SI")==0)
-                        {
-                            guardarFactura(productosEnCarrito);
-                            productosEnCarrito=0;
-                            bandera=0;
-                        }
-                
+                    {
+                        guardarFactura(productosEnCarrito);
+                        productosEnCarrito=0;
+                        bandera=0;
+                    }
                 }
-              
-                else printf("NO HAY PRODUCTOS EN EL CARRITO, PRIMERO EFECTUA UNA COMPRA\n");
-                       
+                else printf("NO HAY PRODUCTOS EN EL CARRITO, PRIMERO EFECTUA UNA COMPRA\n");      
                 break;
             case 3:
                 imprimirInventario();
