@@ -263,7 +263,7 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
     printf("\n..........B I E N V E N I D O  A  N U E S T R A  T I E N D A  D E  P R O D U C T O S  D E  C O M P U T A C I O N..........\n");
        
          
-        do{
+    do{
         opcion=menu();
         switch (opcion)
         {
@@ -313,7 +313,7 @@ int main ()//Funcion principal del programa (Proyecto Final, simulacion de venta
                 printf("ERROR, INTENTE DE NUEVO\n");
                 break;
         }
-        }while (opcion != 5);
+    }while (opcion != 5);
     
     subirInventario();
     return 0;
