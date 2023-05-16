@@ -30,7 +30,7 @@ void agregarProducto()
 
     if (opc < 1 || opc > 7) 
     {
-        printf("Opción inválida\n");
+        printf("ERROR, INTENTE DE NUEVO\n");
     }
     i = opc - 1;
     printf("\nIngrese la cantidad de unidades que desea agregar: ");
@@ -80,7 +80,7 @@ void subirInventario()//Sube el inventario actualizado al archivo
 void imprimirInventario()  //Muestra en pantalla el inventario actual de productos, 
 {
     int i;
-    printf("INVENTARIO\n");
+    printf("\nINVENTARIO\n");
     for(i=0;i<7;i++)
     {
         printf("Numero de producto: %d\n",i+1);
