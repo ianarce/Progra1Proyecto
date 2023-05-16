@@ -177,47 +177,44 @@ void generarFactura(int numProductos, struct Producto *carrito)
 void realizarCompra(int productosEnCarrito) //Permite al usuario realizar compras de productos que estén en el inventario. Muestra en pantalla el inventario actual de productos y pide al usuario que ingrese el número del producto que desea comprar y la cantidad deseada. Verifica que el número de producto sea válido y que haya suficientes unidades disponibles
 {
     int numProducto,cantidad;
-    
-        imprimirInventario();
-        do{
-            printf("Ingresa el numero de producto a comprar: \n");
-            scanf("%d",&numProducto);
-            if(numProducto<=0||numProducto>7)
-            {
-                printf("Error producto no existe ingresa un valor valido\n");
-            }
-            if(inventario[numProducto-1].unidades==0)
-            {
-                printf("PRODUCTO AGOTADO \n");
-            }
+    imprimirInventario();
+    do{
+        printf("Ingresa el numero de producto a comprar: \n");
+        scanf("%d",&numProducto);
+        if(numProducto<=0||numProducto>7)
+        {
+            printf("Error producto no existe ingresa un valor valido\n");
         }
-        while (numProducto<=0||numProducto>7 || inventario[numProducto-1].unidades==0);    
+        if(inventario[numProducto-1].unidades==0)
+        {
+            printf("PRODUCTO AGOTADO \n");
+        }
+    }
+    while (numProducto<=0||numProducto>7 || inventario[numProducto-1].unidades==0);    
 
-        do{
-            printf("Ingresa la cantidad a comprar: \n");
-            scanf("%d",&cantidad);
-                if (cantidad<=0)
-                {
-                    system("cls");
-                    printf("ERROR VALOR ERRONEO \n");
-                }              
-                else if(inventario[numProducto-1].unidades>=cantidad)
-                {
-                    inventario[numProducto-1].unidades-=cantidad;
+    do{
+        printf("Ingresa la cantidad a comprar: \n");
+        scanf("%d",&cantidad);
+        if (cantidad<=0)
+         {
+            system("cls");
+            printf("ERROR VALOR ERRONEO \n");
+        }              
+        else if(inventario[numProducto-1].unidades>=cantidad)
+        {
+            inventario[numProducto-1].unidades-=cantidad;
+            carrito[productosEnCarrito]=comprarProducto(inventario[numProducto-1],cantidad);
                         
-                    carrito[productosEnCarrito]=comprarProducto(inventario[numProducto-1],cantidad);
-                        
-                    printf("Compra realizada con exito\n");//PUESTO QUE EL ARREGLO EMPIEZA EN 0
-                    break;
-                }
-                else 
-                {
-                    system("cls");
-                    printf("Productos agotados o insuficientes \n");
-                    printf("Productos disponibles: %d  \n",inventario[numProducto-1].unidades);
-                    
-                }
-        }while(cantidad<=0||cantidad>inventario[numProducto-1].unidades);
+            printf("Compra realizada con exito\n");//PUESTO QUE EL ARREGLO EMPIEZA EN 0
+            break;
+        }
+        else 
+        {
+        system("cls");
+        printf("Productos agotados o insuficientes \n");
+        printf("Productos disponibles: %d  \n",inventario[numProducto-1].unidades);          
+        }
+    }while(cantidad<=0||cantidad>inventario[numProducto-1].unidades);
     
 }
 
